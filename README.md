@@ -36,6 +36,7 @@ Further Code Example:
     [hpOneview enclosureGroups];
     
     // The above information is required before a profile can be created.
+    // This creates a randomly named profile on the first enclosure group using the first server hardware type
     [hp createRandomSimpleProfile];
     
     // return an array of Network Names to their URIs
