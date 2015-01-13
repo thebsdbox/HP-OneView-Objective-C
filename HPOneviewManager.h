@@ -31,7 +31,7 @@
 
 @property BOOL blocking; // defines blocking on function call
 
-@property HTTPHandler *http;
+//@property HTTPHandler *http;
 
 -(id)initWithUsername:(NSString *)username Password:(NSString *)password;
 

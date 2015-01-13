@@ -22,7 +22,7 @@
     NSDictionary *serversData;
     NSDictionary *serverHardwareData;
     BOOL isBusy; // defines state of UCS Manager
-
+    NSMutableArray *headers;
 }
 
 @end
@@ -34,7 +34,10 @@
     self = [super init];
     if (self)
     {
-        _http = [[HTTPHandler alloc] init];
+        headers = [NSMutableArray array];
+        // Add http headers
+        [headers addObject:@[@"Content-Type",@"application/json"]];
+        [headers addObject:@[@"X-Api-Version",@"120"]];
     }
     return self;
 }
@@ -69,8 +72,8 @@
     //{
         HTTPHandler *httpHandler = [[HTTPHandler alloc] init];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:NSSelectorFromString(notification) name:notification object:nil];
-        httpHandler.headers = _http.headers;
-        httpHandler.method = _http.method;
+        httpHandler.headers = headers;
+        //httpHandler.method = _http.method;
         [httpHandler setReponseString:notification];
         [httpHandler postRequest:[[@"https://" stringByAppendingString:_hostname] stringByAppendingString:_uri] request:request];
         NSLog(@"Registered %@", notification);
@@ -97,7 +100,7 @@
     NSLog(@"Registered %@", notification);
     HTTPHandler *httpHandler = [[HTTPHandler alloc] init];
     httpHandler.method = method;
-    httpHandler.headers = _http.headers;
+    httpHandler.headers = headers;
     [httpHandler setReponseString:notification];
     [httpHandler postRequest:[[@"https://" stringByAppendingString:_hostname] stringByAppendingString:uri] request:request];
     [self wait];
@@ -118,7 +121,7 @@
                                                                    error:&error];
     NSString *sessionID = [jsonResponse objectForKey:@"sessionID"];
     if ([jsonResponse objectForKey:@"sessionID"]) { // Add the Session ID to the headers
-        [_http.headers addObject:@[@"auth",sessionID]];
+        [headers addObject:@[@"auth",sessionID]];
         _auth=YES;
     }
 }
