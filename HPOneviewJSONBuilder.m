@@ -41,4 +41,17 @@
                                  encoding:NSUTF8StringEncoding];
 }
 
++(NSString *)createSimpleProfileWithName:(NSString *)name withServerHardwareType:(NSString *)hardwareType forEnclosureGroup:(NSString *)enclosureGroup
+{
+    NSDictionary *httpDictionary = @{@"type" : @"ServerProfileV4",
+                                     @"name" : name,
+                                     @"serverHardwareTypeUri" : hardwareType,
+                                     @"enclosureGroupUri": enclosureGroup
+                                     };
+    
+    NSError *error = nil;
+    return [[NSString alloc] initWithData: [NSJSONSerialization dataWithJSONObject:httpDictionary options:0 error:&error]
+                                 encoding:NSUTF8StringEncoding];
+}
+
 @end

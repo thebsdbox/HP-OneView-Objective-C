@@ -14,6 +14,7 @@
 +(NSString *)logoutWithID:(NSString *)cookie;  // Build logout element
 +(NSString *)listBladesWithID:(NSString *)cookie;
 +(NSString *)createBlankProfile;
++(NSString *)createSimpleProfileWithName:(NSString *)name withServerHardwareType:(NSString *)hardwareType forEnclosureGroup:(NSString *)enclosureGroup;
 
 
 @end

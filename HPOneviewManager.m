@@ -150,6 +150,22 @@
     NSLog(@"Data: %@", [NSString stringWithUTF8String:[response bytes]]);
 }
 
+-(void)createRandomSimpleProfile
+{
+    if ([[serverHardwareData objectForKey:@"members"] count] > 0 && [[enclosureGroupsData objectForKey:@"members"] count] > 0) {
+        int num = arc4random() % 100; // Generate random number for profile name
+        NSString *profileName = [NSString stringWithFormat:@"Profile%i", num];
+        HTTPHandler *handler = [self postRequest:[HPOneviewJSONBuilder createSimpleProfileWithName:profileName
+                                                                            withServerHardwareType:[[[serverHardwareData objectForKey:@"members"] objectAtIndex:0] objectForKey:@"uri"]
+                                                                                 forEnclosureGroup:[[[enclosureGroupsData objectForKey:@"members"] objectAtIndex:0] objectForKey:@"uri"]]
+                                      withMethod:@"POST"
+                                         withURI:@"/rest/server-profiles"
+                                withNotification:@"blockingCallback"];
+        NSData *response = handler.responseData;
+        NSLog(@"Data: %@", [NSString stringWithUTF8String:[response bytes]]);
+    }
+}
+
 -(void)enclosureGroups
 {
     HTTPHandler *handler = [self postRequest:@""

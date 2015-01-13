@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HTTPHandler.h"
+
 @protocol HPOneviewDelegate <NSObject>
 
 @required
@@ -46,7 +47,10 @@
 -(void)networkSets;
 -(void)fcNetworks;
 
-//
+// Tester Function
+-(void)createRandomSimpleProfile;
+
+
 -(NSArray *)returnEnclosureURI;
 -(NSArray *)returnServerHardwareURI;
 -(NSArray *)returnNetworkURI;
