@@ -13,7 +13,8 @@ HPOneviewManager.h/m - This is the main class for interacting with HP OneView an
 Code Example:
 ~~~objective-c
 
-    HPOneviewManager *hpOneview = [[HPOneviewManager alloc] initWithUsername:@"Administrator" Password:@"password"];
+    HPOneviewManager *hpOneview = [[HPOneviewManager alloc] initWithUsername:@"Administrator" 
+                                                                    Password:@"password"];
 
     [hpOneview setDelegate:self]; // Required for future use
     [hpOneview setHostname:@"10.0.0.1"];
