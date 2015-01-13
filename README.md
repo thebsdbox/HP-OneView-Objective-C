@@ -14,9 +14,7 @@ Code Example:
 ~~~objective-c
 
     HPOneviewManager *hpOneview = [[HPOneviewManager alloc] initWithUsername:@"Administrator" Password:@"password"];
-    [[hpOneview http].headers addObject:@[@"Content-Type",@"application/json"]];
-    [[hpOneview http].headers addObject:@[@"X-Api-Version",@"120"]];
-    
+
     [hpOneview setDelegate:self]; // Required for future use
     [hpOneview setHostname:@"10.0.0.1"];
     [hpOneview setBlocking:YES]; // done execute on main thread otherwise UI will lag.
