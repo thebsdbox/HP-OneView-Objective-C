@@ -1,5 +1,6 @@
 # HPOneView
 
+**PLEASE NOTE: This is not supported by HP**
 
 This is a very simple wrapper around the RESTful API of HP Oneview and at this time offers only simplistic functionality, with the view that additions to this "skeleton" wont take much. 
 
