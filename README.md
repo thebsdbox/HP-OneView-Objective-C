@@ -1,6 +1,6 @@
 # HPOneView
 
-**PLEASE NOTE: This is not supported by HP**
+**PLEASE NOTE: This is not a HP supported method for communicating with OneView**
 
 This is a very simple wrapper around the RESTful API of HP Oneview and at this time offers only simplistic functionality, with the view that additions to this "skeleton" wont take much. 
 
